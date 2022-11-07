@@ -12,7 +12,7 @@ const ItemNav = () => {
         <Link to="/blog">Blogs</Link>
       </li>
       <li className="text-[#a1a1a7] hover:text-white">
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/addnewservice">Add New Service</Link>
       </li>
       <li className="text-[#a1a1a7] hover:text-white">
         <Link to="/about">About Me</Link>
