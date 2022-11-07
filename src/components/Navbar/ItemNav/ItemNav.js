@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../../style/style.css";
 
 const ItemNav = () => {
+  const [user] = useState(true);
+  const logout = () => {
+    console.log("hi");
+  };
   const menuItems = (
     <>
       <li className="text-[#a1a1a7] hover:text-white">
@@ -11,12 +15,61 @@ const ItemNav = () => {
       <li className="text-[#a1a1a7] hover:text-white">
         <Link to="/blog">Blogs</Link>
       </li>
-      <li className="text-[#a1a1a7] hover:text-white">
+      {/* <li className="text-[#a1a1a7] hover:text-white">
         <Link to="/addnewservice">Add New Service</Link>
-      </li>
+      </li> */}
       <li className="text-[#a1a1a7] hover:text-white">
         <Link to="/about">About Me</Link>
       </li>
+
+      {user ? (
+        <div className="dropdown dropdown-end">
+          <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <h3 className="text-center text-lg text-secondary flex justify-center items-center h-full">
+                  {user?.email?.slice(0, 2)}
+                </h3>
+              )}
+            </div>
+          </label>
+          <ul
+            tabIndex="0"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#151515cc] border-t-2 border-red-600/60  w-52"
+          >
+            <li>
+              <Link
+                to="/userreview"
+                className="justify-between text-white hover:text-red-700/70"
+              >
+                My Reviews
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/addnewservice"
+                className="justify-between text-white  hover:text-red-700/70"
+              >
+                Add Service
+              </Link>
+            </li>
+            <li>
+              <button
+                className=" text-white  hover:text-red-700/70"
+                onClick={logout}
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -32,7 +85,9 @@ const ItemNav = () => {
         </div>
       </div>
       <div className="flex-none">
-        <ul className=" flex gap-x-8 p-0">{menuItems}</ul>
+        <ul className=" flex justify-center items-center gap-x-8 p-0">
+          {menuItems}
+        </ul>
       </div>
     </div>
   );

@@ -8,6 +8,8 @@ import Home from "./components/Home/Home";
 import Services from "./components/Home/Services/Services";
 
 import Navbar from "./components/Navbar/Navbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [service, setService] = useState([]);
@@ -41,6 +43,8 @@ function App() {
         />
         <Route path="/addnewservice" element={<AddService />} />
       </Routes>
+
+      <ToastContainer />
     </div>
   );
 }

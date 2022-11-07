@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const AddService = () => {
   const [getData, setGetData] = useState();
@@ -17,7 +18,33 @@ const AddService = () => {
       body: JSON.stringify(getData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data) {
+          toast.success("successfully your data save", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          e.target.reset();
+        } else {
+          toast.warn("please try again", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
+        console.log(data);
+      });
   };
   return (
     <div className="px-12 mx-auto bg-[#000000] pt-12 h-screen">
