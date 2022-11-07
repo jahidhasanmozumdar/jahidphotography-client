@@ -1,10 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Home from "./components/Home/Home";
+
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <div className="btn btn-primary text-red-700">see</div>
+      <Navbar />
+      <Home />
     </div>
   );
 }

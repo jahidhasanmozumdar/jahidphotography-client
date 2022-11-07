@@ -1,0 +1,26 @@
+.navbar{
+    min-height: 2rem;
+}
+.textFormate{
+    letter-spacing: 5.15px;
+}
+.textFormate2{
+    letter-spacing: 2.15px;
+}
+
+
+.banner{
+    background: url("../asset/home_bg.jpg"), no-repeat;
+    height: 90vh;
+    width: 100%;
+    background-position: center;
+}
+
+.socialButton:hover{
+    background: linear-gradient(90deg , #fe243e 0%, #bb47fd) no-repeat center;
+    background-size: 150% 150%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #bb47fd;
+    cursor: pointer;
+}
