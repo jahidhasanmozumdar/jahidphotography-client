@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const DetailsService = () => {
@@ -19,7 +20,7 @@ const DetailsService = () => {
     fetch(`https://jahidphotography-api.onrender.com/review`)
       .then((res) => res.json())
       .then((data) => setUserRatings(data));
-  }, []);
+  }, [ratings]);
 
   let reviews = [];
   for (let i = 0; i < details?.rating; i++) {
@@ -36,13 +37,42 @@ const DetailsService = () => {
     }));
 
   const handleReview = () => {
-    fetch(`https://jahidphotography-api.onrender.com/review`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(ratings),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    if (user?.email) {
+      console.log("jsdg");
+      fetch(`https://jahidphotography-api.onrender.com/review`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ratings),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            toast.success("successfully your data save", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            // e.target.reset();
+            setRatings("");
+          }
+        });
+    } else {
+      toast.warn("please try again", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
   console.log(userRatings);
   return (
