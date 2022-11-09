@@ -27,9 +27,12 @@ const ReviewPage = () => {
         Our Customers Are Saying?
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {reviews?.slice(0, 6).map((review) => (
-          <DisplayReview key={review._id} review={review} />
-        ))}
+        {reviews
+          ?.slice(0, 6)
+          .reverse()
+          .map((review) => (
+            <DisplayReview key={review._id} review={review} />
+          ))}
       </div>
     </div>
   );

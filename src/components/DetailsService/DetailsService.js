@@ -98,9 +98,9 @@ const DetailsService = () => {
               Price : $ {details?.price}
             </p>
             <div className="mt-12">
-              {userRatings?.map((rating) => (
+              {userRatings?.reverse().map((rating) => (
                 <>
-                  <div className="flex justify-start items-center">
+                  <div className="flex justify-start items-center mt-2">
                     <label tabIndex="0" className=" avatar">
                       <div className="w-6 rounded-full">
                         {user?.photoURL ? (
