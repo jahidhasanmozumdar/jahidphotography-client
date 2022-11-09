@@ -7,7 +7,7 @@ import Services from "./Services/Services";
 const Home = ({ loading, service }) => {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#000000]">
+    <div className="bg-[#000000] pb-6">
       <Banner />
       <About />
       <Services loading={loading} service={service} />

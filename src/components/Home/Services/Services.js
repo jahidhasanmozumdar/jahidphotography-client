@@ -10,7 +10,7 @@ const Services = ({ service, loading }) => {
         <p className="text-center text-white">loading....</p>
       ) : (
         <div className="grid grid-cols-3 gap-6">
-          {service?.map((s) => (
+          {service?.reverse().map((s) => (
             <div className="card rounded-none w-full ">
               <figure className="photo">
                 <img className="img-fluid " src={s?.photo} alt="Shoes" />

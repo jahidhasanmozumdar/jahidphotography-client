@@ -1,12 +1,16 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 import "../../../style/style.css";
 
 const ItemNav = () => {
-  const [user] = useState(true);
+  const [user, loading, error] = useAuthState(auth);
   const logout = () => {
-    console.log("hi");
+    signOut(auth);
   };
+  console.log(user);
   const menuItems = (
     <>
       <li className="text-[#a1a1a7] hover:text-white">
@@ -41,7 +45,7 @@ const ItemNav = () => {
           >
             <li>
               <Link
-                to="/userreview"
+                to="/myreview"
                 className="justify-between text-white hover:text-red-700/70"
               >
                 My Reviews
@@ -67,7 +71,9 @@ const ItemNav = () => {
         </div>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          <Link className="text-[#a1a1a7] hover:text-white" to="/login">
+            Login
+          </Link>
         </li>
       )}
     </>
@@ -75,15 +81,18 @@ const ItemNav = () => {
   return (
     <div className="navbar bg-[#0b0b0b] px-12 py-2">
       <div className="flex-1 ">
-        <div className="justify-start items-center flex">
-          <p className="text-6xl text-white">J</p>
-          <div className="w-[2px] h-10 mx-2 bg-[#343434]"></div>
-          <p className="text-[7px] text-white textFormate2 text-start ">
-            JAHID <br /> PHOTO <br />
-            SERVICE
-          </p>
-        </div>
+        <Link to="/">
+          <div className="justify-start items-center flex">
+            <p className="text-6xl text-white">J</p>
+            <div className="w-[2px] h-10 mx-2 bg-[#343434]"></div>
+            <p className="text-[7px] text-white textFormate2 text-start ">
+              JAHID <br /> PHOTO <br />
+              SERVICE
+            </p>
+          </div>
+        </Link>
       </div>
+
       <div className="flex-none">
         <ul className=" flex justify-center items-center gap-x-8 p-0">
           {menuItems}
