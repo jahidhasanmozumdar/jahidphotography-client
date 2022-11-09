@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import SocialLogin from "../Shared/SocialLogin";
+import Loading from "../Shared/Loading";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const LogIn = () => {
   };
 
   if (loading) {
-    return <p>kjs</p>;
+    return <Loading />;
   }
 
   let logInError;

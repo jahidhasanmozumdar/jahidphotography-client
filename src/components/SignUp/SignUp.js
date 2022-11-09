@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import SocialLogin from "../Shared/SocialLogin";
+import Loading from "../Shared/Loading";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const SignUp = () => {
   let signInError;
 
   if (loading || updating) {
-    return <p>sjkdg</p>;
+    return <Loading />;
   }
   if (error || updateError) {
     signInError = <p className="text-red-500">{error?.message}</p>;

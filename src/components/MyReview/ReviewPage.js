@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import Loading from "../Shared/Loading";
 
 import DisplayReview from "./DisplayReview";
 
@@ -14,7 +15,7 @@ const ReviewPage = () => {
       .then((data) => setReviews(data));
   }, [user]);
   if (loading) {
-    return <p>hsdaf</p>;
+    return <Loading />;
   }
   console.log("dth", reviews);
   return (
